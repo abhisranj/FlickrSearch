@@ -46,7 +46,8 @@ export default class App extends React.Component {
 
 	/* Make API call for the query */
 	callFlickr(text) {
-		const url = constants.BASE_URL + "&text=" + text || this.state.searchText;
+		const query = text ? text : this.state.searchText;
+		const url = constants.BASE_URL + "&text=" + query;
 				fetch(url)
 					.then(httpStatus)
 					.then(this.setState({loading: true}))
